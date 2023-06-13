@@ -110,6 +110,6 @@ if __name__ == '__main__':
     # response = channel_stats(channelID='UCzIxc8Vg53_ewaRIk3shBug')
 
     # get comments
-    response = comment_threads(videoID='Qo8dXyKXyME', to_csv=True)
+    response = comment_threads(videoID='m9EX0f6V11Y', to_csv=True)
 
     print(response)
