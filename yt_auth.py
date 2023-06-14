@@ -46,8 +46,8 @@ if __name__ == '__main__':
     result = execute_api_request(
         youtubeAnalytics.reports().query,
         ids='channel==MINE',
-        startDate='2022-05-01',
-        endDate='2023-04-30',
+        startDate='2023-01-01',
+        endDate='2023-06-13',
         metrics='estimatedMinutesWatched,views,likes,subscribersGained',
         dimensions='day',
         sort='day'

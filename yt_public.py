@@ -38,7 +38,7 @@ def comment_threads(videoID, to_csv=False):
     
     request = youtube.commentThreads().list(
         part='id,replies,snippet',
-        videoId=videoID,
+        videoId=videoID
     )
     response = request.execute()
     comments_list.extend(process_comments(response['items']))
@@ -98,18 +98,8 @@ def get_video_ids(channelId):
     return videoIds
 
 
-
 if __name__ == '__main__':
-    # to get a list of IDs from a channel
-    # ids = get_video_ids("UCws1b7urfxMnvjhUJxHjtuQ")
-
-    # to get results from search
-    # response = search_result("pyscript")
-
-    # get channel stats
-    # response = channel_stats(channelID='UCzIxc8Vg53_ewaRIk3shBug')
-
-    # get comments
-    response = comment_threads(videoID='m9EX0f6V11Y', to_csv=True)
+     # get comments
+    response = comment_threads(videoID='6tTM9nbRk5A', to_csv=True)
 
     print(response)
