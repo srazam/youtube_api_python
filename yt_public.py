@@ -86,7 +86,7 @@ def get_video_ids(channelId):
     while response.get('nextPageToken', None):
         request = youtube.search().list(
             part="snippet",
-            channelId=channelId,
+            channelId=channelId
         )
         response = request.execute()
         responseItems = response['items']
@@ -100,6 +100,6 @@ def get_video_ids(channelId):
 
 if __name__ == '__main__':
      # get comments
-    response = comment_threads(videoID='6tTM9nbRk5A', to_csv=True)
+    response = comment_threads(videoID='pWdKf3MneyI', to_csv=True)
 
     print(response)
