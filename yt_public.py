@@ -38,12 +38,14 @@ def comment_threads(videoID, to_csv=False):
     
     request = youtube.commentThreads().list(
         part='id,replies,snippet',
+        maxResults = 100,
         videoId=videoID
     )
     response = request.execute()
     comments_list.extend(process_comments(response['items']))
 
     # if there is nextPageToken, then keep calling the API
+    '''
     while response.get('nextPageToken', None):
         request = youtube.commentThreads().list(
             part='id,replies,snippet',
@@ -52,6 +54,7 @@ def comment_threads(videoID, to_csv=False):
         )
         response = request.execute()
         comments_list.extend(process_comments(response['items']))
+    '''
 
     comments_list = list(unique_everseen(comments_list))
 
@@ -73,7 +76,6 @@ def get_video_ids(channelId):
         part="snippet",
         channelId=channelId,
         type="video",
-        maxResults=50,
         order="date"
     )
 
@@ -82,6 +84,7 @@ def get_video_ids(channelId):
 
     videoIds.extend([item['id']['videoId'] for item in responseItems if item['id'].get('videoId', None) != None])
 
+    '''
     # if there is nextPageToken, then keep calling the API
     while response.get('nextPageToken', None):
         request = youtube.search().list(
@@ -92,6 +95,7 @@ def get_video_ids(channelId):
         responseItems = response['items']
 
         videoIds.extend([item['id']['videoId'] for item in responseItems if item['id'].get('videoId', None) != None])
+    '''
     
     print(f"Finished fetching videoIds for {channelId}. {len(videoIds)} videos found.")
 
@@ -102,6 +106,6 @@ if __name__ == '__main__':
      # get comments
 
      #Where it says videoID = '', that is where you put the ID for the YouTube video
-    response = comment_threads(videoID='r51cYVZWKdY', to_csv=True)
+    response = comment_threads(videoID='6ZfuNTqbHE8', to_csv=True)
 
     print(response)
