@@ -100,6 +100,8 @@ def get_video_ids(channelId):
 
 if __name__ == '__main__':
      # get comments
-    response = comment_threads(videoID='pWdKf3MneyI', to_csv=True)
+
+     #Where it says videoID = '', that is where you put the ID for the YouTube video
+    response = comment_threads(videoID='r51cYVZWKdY', to_csv=True)
 
     print(response)
